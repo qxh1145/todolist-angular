@@ -13,4 +13,5 @@ export class TodoItemComponent {
     data = input.required<Todo>();
     toggleStatus = output<number>();
     deleteItem = output<number>();
+    toggleUpdate = output<number>();
 }

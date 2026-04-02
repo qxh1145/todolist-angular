@@ -1,17 +1,22 @@
 <div id="todo-list">
   <h1 class="font-bold flex justify-center p-[1rem] size-10 w-full">Todo List</h1>
+  <div class="flex justify-center gap-3">
+    <input #todoInput type="text" class="px-3 border-2" placeholder="add task..." />
+    <button
+      (click)="todoService.addTodo(todoInput.value); todoInput.value = ''"
+      type="button"
+      class="active:shadow-[1px_2px_black] shadow-[3px_4px_black] bg-violet-500 rounded-lg text-white hover:cursor-pointer px-5"
+    >
+      add
+    </button>
+  </div>
 
-  <ul>
+  <ul class="mt-5">
     @for (item of todoService.todos(); track item.id) {
-      <app-todo-item [data]="item" (deleteItem)="todoService.deleteTodo($event)"> </app-todo-item>
+      <app-todo-item class="" [data]="item" (toggleUpdate)="todoService.toggleComplete($event)" (deleteItem)="todoService.deleteTodo($event)">
+      </app-todo-item>
     } @empty {
-      <div class="flex justify-between items-center border ml-[10rem] mr-[10rem] p-8">
-        <p>Task text</p>
-        <div class="flex gap-2">
-          <button class="border p-2 rounded-[20px]">add text</button>
-          <button class="border p-2 rounded-[20px]">add text</button>
-        </div>
-      </div>
+      <p class="flex justify-center text-red-700 text-2xl w-full">Add some task plz...</p>
     }
   </ul>
 </div>

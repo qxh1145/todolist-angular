@@ -1,3 +1,31 @@
-<div>
-    demo texr
-</div>
+@if (data().completed === false) {
+  <div class="flex max-w-[30em] justify-between items-center border mx-auto p-3">
+    <div>
+      <p>{{ data().title }}</p>
+    </div>
+
+    <div class="flex gap-2">
+      <button (click)="deleteItem.emit(data().id)" class="border p-2 rounded-[20px] bg-red-500">
+        delete
+      </button>
+      <button (click)="toggleUpdate.emit(data().id)" class="border p-2 rounded-[20px] bg-green-400">
+        done
+      </button>
+    </div>
+  </div>
+} @else {
+  <div class="flex max-w-[30em] justify-between items-center border mx-auto p-3">
+    <div>
+      <p class="line-through text-gray-500">{{ data().title }}</p>
+    </div>
+
+    <div class="flex gap-2">
+      <button (click)="deleteItem.emit(data().id)" class="border p-2 rounded-[20px] bg-red-500">
+        delete
+      </button>
+      <button (click)="toggleUpdate.emit(data().id)" class="border p-2 rounded-[20px] bg-green-400">
+        undone
+      </button>
+    </div>
+  </div>
+}
