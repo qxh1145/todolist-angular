@@ -1,0 +1,17 @@
+<div id="todo-list">
+  <h1 class="font-bold flex justify-center p-[1rem] size-10 w-full">Todo List</h1>
+
+  <ul>
+    @for (item of todoService.todos(); track item.id) {
+      <app-todo-item [data]="item" (deleteItem)="todoService.deleteTodo($event)"> </app-todo-item>
+    } @empty {
+      <div class="flex justify-between items-center border ml-[10rem] mr-[10rem] p-8">
+        <p>Task text</p>
+        <div class="flex gap-2">
+          <button class="border p-2 rounded-[20px]">add text</button>
+          <button class="border p-2 rounded-[20px]">add text</button>
+        </div>
+      </div>
+    }
+  </ul>
+</div>
